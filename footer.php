@@ -93,6 +93,35 @@
     <?php wp_footer(); ?>
     <!-- /WP_Footer --> 
 
-      
+    <!-- Custom scripts by Daniel Prada -->
+    <script>
+    jQuery(document).ready(function($){
+        // Replace select navigation with ul li navigation
+        $('.tinynav').hide()
+        var selectNav = $('.tinynav').html();
+        var mobileNavli = selectNav.replace(/- /g,'').replace('<option value="#">Portfolio</option>','').replace(/option/g,"a").replace(/value=/g,"href=");
+        var mobileNav = "<ul id='PDnav'>"+mobileNavli+"</ul>";
+        $('.tinynav').after(mobileNav);        
+        $('#PDnav a').wrap('<li>');
+        
+        var mobileNavTotalHeight = $('#PDnav').outerHeight()
+
+        var navitemHeight = $('#PDnav li').eq(0).outerHeight();
+        $('#PDnav').css({'height': navitemHeight});
+
+        var mobileCount = 0;
+        $('#PDnav li:first-child').click(function(){
+            if (mobileCount === 0) {
+                $('#PDnav').animate({'height':mobileNavTotalHeight});
+                mobileCount++;
+            } else {
+                $('#PDnav').animate({'height':navitemHeight});
+                mobileCount--
+            }
+            
+        })
+
+    })
+    </script>
     </body>
 </html>
