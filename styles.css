@@ -1582,6 +1582,10 @@ Post Quote
   font-size: 1.61538em;
   line-height: 1.25em;
 }
+
+#content blockquote {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 /*
 ==========================================
 Post Image
