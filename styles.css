@@ -1,7 +1,7 @@
 /*
 Theme Name: Mantra
 Theme URI: http://www.quemalabs.com
-Description: A Premium WordPress Theme.
+Description: A Premium WordPress Theme. Document has been modified modified by Daniel Prada.
 Version: 1.0
 Author: Quema Labs
 Author URI: http://www.quemalabs.com
@@ -23,8 +23,17 @@ html {
   box-sizing: border-box;
 }
 body {
-  background-color: #000000;
+  background-image:url('http://the360site.com/wp-content/uploads/2013/07/bg.jpg');
 }
+
+p.lead {
+    line-height:1.4em;
+}
+
+strong {
+    color: #BC3535;
+}
+
 #wrap {
   position: relative;
   height: 100%;
@@ -51,6 +60,21 @@ Header
   color: #ffffff;
   margin: 1.92307692307692em 0;
 }
+
+.logo_container img {
+  -webkit-transition: all 2s;
+  -moz-transition: all 2s;
+  transition: all 2s; 
+}
+
+.logo_container img:hover {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); 
+}
+
 .page-template-page-portfolio-php .logo_container {
   margin: 1.92307692307692em 0 0.38461538461538em 0;
 }
