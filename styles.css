@@ -2597,6 +2597,17 @@ Filter
   opacity: 1;
   filter: alpha(opacity=100);
 }
+
+/* Black overlay for navigation for experience tab */
+.page-id-84 #header .jqueryslidemenu .nav {
+  float: right;
+  background: rgba(0, 0, 0, 0.54);
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  padding: 0 1em;
+}
+
+
 /*
 Sort Buttons
 --------------------------------
