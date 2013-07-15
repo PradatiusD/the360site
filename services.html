@@ -1,30 +1,120 @@
+<style>
+	#SpinnyServices {
+		margin:0 auto;
+		display: block;
+		overflow: hidden;
+		position:relative;
+	}
+
+	#SpinnyServices h3 {
+		position: absolute;
+		font-weight: 200;
+		text-align: center;
+		top: 50%;
+		margin-top: -30px;
+		width: 80%;
+		margin-left: 10%;
+	}
+
+	#SpinnyServicesAfter {
+		display:none;
+	}
+</style>
+
 <blockquote class="pull-right">
 	<p class="lead">With <strong>37 years of experience</strong> and some of the <strong>biggest names</strong> in the music and entertainment industry, we're confident we can find, evaluate, and elevate the next generation of performers from where they are to where they need to be.</p>
 	  <small>Carlos Perez <cite title="Source Title">Co-Founder 360 Group</cite></small>
 </blockquote>
-<h2 class="lead">Our services include:</h2>
-<ul>
-	<li>Artist Consulting</li>
-	<li>Artist Development</li>
-	<li>Artist Management</li>
-	<li>Comedy Clinics</li>
-	<li>Demo/CD Evaluation</li>
-	<li>Event Production</li>
-	<li>Independent A&amp;R Services</li>
-	<li>Independent Label Consulting</li>
-	<li>Media Planning</li>
-	<li>Media Buying</li>
-	<li>Music Licensing</li>
-	<li>Music Clinics</li>
-	<li>National and International Music Distribution</li>
-	<li>Promotion</li>
-	<li>Project and Product Marketing &amp; Management</li>
-	<li>Public Relations</li>
-	<li>Publishing</li>
-	<li>Seminars “Music Business A-Z”</li>
-	<li>Social Media</li>
-	<li>Strategic Marketing</li>
-	<li>Viral Music Marketing</li>
-</ul>
+<div id="SpinnyServicesAfter">
+	<h2 class="lead">Our services include:</h2>
+	<ul>
+		<li>Artist Consulting</li>
+		<li>Artist Development</li>
+		<li>Artist Management</li>
+		<li>Comedy Clinics</li>
+		<li>Demo/CD Evaluation</li>
+		<li>Event Production</li>
+		<li>Independent A&amp;R Services</li>
+		<li>Independent Label Consulting</li>
+		<li>Media Planning</li>
+		<li>Media Buying</li>
+		<li>Music Licensing</li>
+		<li>Music Clinics</li>
+		<li>National and International Music Distribution</li>
+		<li>Promotion</li>
+		<li>Project and Product Marketing &amp; Management</li>
+		<li>Public Relations</li>
+		<li>Publishing</li>
+		<li>Seminars “Music Business A-Z”</li>
+		<li>Social Media</li>
+		<li>Strategic Marketing</li>
+		<li>Viral Music Marketing</li>
+	</ul>
+</div>
 <hr>
 <a href="http://the360site.com/contact/" class="btn btn-danger lead btn-large">Contact us</a>
+
+<div id="SpinnyServices">
+	<h3>We offer the full 360 degree promotional platform</h3>
+</div>
+
+
+<!-- Section that will be inlcuded in the head -->
+<script>
+jQuery(document).ready(function($){
+	// Big thanks to http://stackoverflow.com/questions/5061318/drawing-centered-arcs-in-raphael-js
+	// for information on how to do centered arcs with RaphaelJS
+
+	$.getScript('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js', function(){
+		console.log('Raphael loaded successfully')
+
+	// Custom Arc Attribute, position x&y, value portion of total, total value, Radius
+	var arcCanvasSize = 300;
+	$('#SpinnyServices').css({
+		'width':arcCanvasSize,
+		'height':arcCanvasSize
+	})
+	var archtype = Raphael("SpinnyServices", arcCanvasSize, arcCanvasSize);
+	archtype.customAttributes.arc = function (xloc, yloc, value, total, R) {
+	    var alpha = 360 / total * value,
+	        a = (90 - alpha) * Math.PI / 180,
+	        x = xloc + R * Math.cos(a),
+	        y = yloc - R * Math.sin(a),
+	        path;
+	    if (total == value) {
+	        path = [
+	            ["M", xloc, yloc - R],
+	            ["A", R, R, 0, 1, 1, xloc - 0.01, yloc - R]
+	        ];
+	    } else {
+	        path = [
+	            ["M", xloc, yloc - R],
+	            ["A", R, R, 0, +(alpha > 180), 1, x, y]
+	        ];
+	    }
+	    return {
+	        path: path
+	    };
+	};
+
+	//make an centered arc with a radius of arcCanvasSize * 0.45 (because we have to account for the
+	//size of the circle stroke) that grows from 0 to 99.99% for 2000 seconds.
+
+	var my_arc = archtype.path().attr({
+	    "stroke": "#BC3535",
+	        "stroke-width": 4,
+	    arc: [arcCanvasSize/2, arcCanvasSize/2, 0, 100, arcCanvasSize*0.45]
+	});
+
+	my_arc.animate({
+	    arc: [arcCanvasSize/2, arcCanvasSize/2, 99.99, 100, arcCanvasSize*0.45]
+	}, 3000, function(){
+		$('#SpinnyServices').fadeOut('slow', function(){
+			$('#SpinnyServicesAfter').fadeIn('slow')
+		})
+	});	
+
+	})
+
+})
+</script>
