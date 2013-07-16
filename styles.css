@@ -4065,3 +4065,8 @@ img.about-us-photo {
   display: block;
   margin: 1em auto;
 }
+
+.portfolio-post .entry_wrap {
+    background: rgba(0, 0, 0, 0.64);
+    padding: 1em;
+}
