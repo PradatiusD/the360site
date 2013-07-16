@@ -120,7 +120,16 @@
             }
             
         })
-
+        // Fix for display of About us content on mobile.
+        var bodyWidth = $('body').width();
+        if (bodyWidth < 481 && document.URL === 'http://the360site.com/about-us/') {
+            var CarlosPhotoHTML = $('article#post-7 .one_third').eq(0).html();
+            $('article#post-7 .two_third').eq(0).before(CarlosPhotoHTML).wrap('<div class="one_third">');
+            $('article#post-7 .one_third').eq(1).remove();
+            $('article#post-7 .two_third').removeClass('two_third');
+            $('article#post-7 .one_third').removeClass('one_third last');
+            $('article#post-7 img').addClass('about-us-photo')            
+        }
     })
     </script>
     </body>

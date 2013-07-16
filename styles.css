@@ -4058,3 +4058,10 @@ LESS Variables and Mixins
     page-break-after: avoid;
   }
 }
+
+
+/* For Mobile About us */
+img.about-us-photo {
+  display: block;
+  margin: 1em auto;
+}
